@@ -24,7 +24,7 @@ class Task2 implements Runnable{
     }
 }
 public class ThreadBasicsRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //Task1
         System.out.print("\nTask1 Kicked off");
         Task1 task1 = new Task1();
@@ -35,6 +35,9 @@ public class ThreadBasicsRunner {
         Task2 task2 = new Task2();
         Thread threadTask2 = new Thread(task2);
         threadTask2.start();
+
+        task1.join();// La linea de codigo siguiente unicamente es ejecutada despues de que la peticion termino su proceso
+        threadTask2.join();
 
         System.out.println("\n Task3 Kicked off");
         //Task3
